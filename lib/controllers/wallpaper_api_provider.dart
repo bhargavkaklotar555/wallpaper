@@ -10,7 +10,7 @@ class APIControllers extends ChangeNotifier {
   }
 
   search({String val = "animal"}) async {
-    data = await APIHelper.apiHelper.getWallpeper(query: val) ?? [];
+    data = await APIHelper.apiHelper.getWallpeper(wall: val) ?? [];
     notifyListeners();
   }
 }
