@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sky_scraper_wallpaper_app/views/scrrens/home_page.dart';
+import 'package:sky_scraper_wallpaper_app/views/screens/home_page.dart';
 import 'controllers/wallpaper_api_provider.dart';
 
 void main() {
