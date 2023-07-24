@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/wallpaper_api_provider.dart';
+import '../../modals/myRoutes.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,7 +15,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Wallpaper App"),
+        title: Image.asset("assets/images/text.png"),
+        backgroundColor: Color(0xff0F0E1C),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -24,12 +26,17 @@ class _HomePageState extends State<HomePage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 TextField(
+                  style: TextStyle(color: Colors.white),
                   onSubmitted: (val) {
                     provider.search(val: val);
                     print("data : $val");
                   },
                   decoration: InputDecoration(
-                    suffixIcon: const Icon(Icons.search),
+                    hintText: "search",
+                    suffixIcon: const Icon(
+                      Icons.search,
+                      color: Colors.white,
+                    ),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
@@ -42,11 +49,19 @@ class _HomePageState extends State<HomePage> {
                   child: GridView.builder(
                     itemCount: provider.data.length,
                     itemBuilder: (context, index) {
-                      return ClipRRect(
-                        borderRadius: BorderRadius.circular(15),
-                        child: Image.network(
-                          provider.data[index]['largeImageURL'],
-                          fit: BoxFit.cover,
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                            MyRoutes.wallpaper_detail_page,
+                            arguments: provider.data[index],
+                          );
+                        },
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(15),
+                          child: Image.network(
+                            provider.data[index]['largeImageURL'],
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       );
                     },
@@ -63,6 +78,7 @@ class _HomePageState extends State<HomePage> {
           },
         ),
       ),
+      backgroundColor: Color(0xff0F0E1C),
     );
   }
 }

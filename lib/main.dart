@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sky_scraper_wallpaper_app/views/screens/check_network_page.dart';
+import 'package:sky_scraper_wallpaper_app/views/screens/check_network_page.dart';
 import 'package:sky_scraper_wallpaper_app/views/screens/home_page.dart';
+import 'package:sky_scraper_wallpaper_app/views/screens/splash_screen.dart';
+import 'package:sky_scraper_wallpaper_app/views/screens/splash_screen.dart';
+import 'package:sky_scraper_wallpaper_app/views/screens/wallpaper_detail_page.dart';
 import 'controllers/wallpaper_api_provider.dart';
+import 'modals/myRoutes.dart';
 
 void main() {
   runApp(
@@ -22,7 +28,13 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      initialRoute: MyRoutes.Splash_Screen_Page,
+      routes: {
+        MyRoutes.Check_Network_Page: (context) => Check_Network_Page(),
+        MyRoutes.HomePage: (context) => HomePage(),
+        MyRoutes.Splash_Screen_Page: (context) => Splash_Screen_Page(),
+        MyRoutes.wallpaper_detail_page: (context) => wallpaper_detail_page(),
+      },
     );
   }
 }
