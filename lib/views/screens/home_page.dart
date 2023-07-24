@@ -15,11 +15,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Image.asset("assets/images/text.png"),
+        title: Container(
+          height: 40,
+          child: Image.asset("assets/images/text.png"),
+        ),
         backgroundColor: Color(0xff0F0E1C),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.only(bottom: 16, left: 16, right: 16),
         child: Consumer<APIControllers>(
           builder: (context, provider, _) {
             return Column(
@@ -33,6 +36,7 @@ class _HomePageState extends State<HomePage> {
                   },
                   decoration: InputDecoration(
                     hintText: "search",
+                    hintStyle: TextStyle(color: Colors.grey),
                     suffixIcon: const Icon(
                       Icons.search,
                       color: Colors.white,
