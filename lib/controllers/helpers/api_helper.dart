@@ -15,6 +15,8 @@ class APIHelper {
     );
 
     if (response.statusCode == 200) {
+      print(
+          "===================${response.statusCode}=========================");
       var data = jsonDecode(response.body);
 
       List allData = data['hits'];

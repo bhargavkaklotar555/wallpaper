@@ -1,5 +1,8 @@
 import 'package:async_wallpaper/async_wallpaper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../../controllers/wallpaper_api_provider.dart';
 
 class wallpaper_detail_page extends StatelessWidget {
   const wallpaper_detail_page({super.key});
@@ -62,6 +65,17 @@ class wallpaper_detail_page extends StatelessWidget {
                 ),
               ];
             },
+          ),
+          IconButton(
+            onPressed: () {
+              Provider.of<APIControllers>(context, listen: false).addfav(
+                fav: data['largeImageURL'],
+              );
+            },
+            icon: Icon(
+                (Provider.of<APIControllers>(context, listen: true).fav_icon)
+                    ? Icons.favorite
+                    : Icons.favorite_border),
           ),
         ],
         backgroundColor: Colors.transparent,

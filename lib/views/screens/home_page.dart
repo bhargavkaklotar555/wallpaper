@@ -19,6 +19,14 @@ class _HomePageState extends State<HomePage> {
           height: 40,
           child: Image.asset("assets/images/text.png"),
         ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(MyRoutes.FavritePage);
+            },
+            icon: Icon(Icons.favorite),
+          ),
+        ],
         backgroundColor: Color(0xff0F0E1C),
       ),
       body: Padding(
